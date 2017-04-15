@@ -3,6 +3,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Server {
 	public static ServerSocket server;
@@ -10,12 +11,14 @@ public class Server {
 	public static void handleConnection(Socket client) throws IOException{
 		Scanner in = new Scanner(client.getInputStream()); //Der Eingang vom Server
 		PrintWriter out = new PrintWriter(client.getOutputStream(), true); //Der Datenstrom wieder zurueck
-		String s = in.nextLine();
-		out.println(s+s);
+		String s[] = in.nextLine().split(Pattern.quote("#"));
+		System.out.print("Eingehende Verbindung erkannt. ("+s[0]+")");
+		out.println(s[1]+s[1]);
 	}
 	
 	public static void run() throws IOException{
 		server = new ServerSocket(1714);
+		System.out.println("Der Server wurde gestartet. ("+server.getInetAddress().getHostAddress()+":"+server.getLocalPort()+")");
 		while (true){
 			//Hoert am Socket, ob was ankommt.
 			Socket client = null;

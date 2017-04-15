@@ -9,7 +9,7 @@ public class init {
 	Scanner a = new Scanner(System.in);
 	
 	s = a.next();
-	System.out.println("Sie haben "+s+" eingegeben.");
+	//System.out.println("Sie haben "+s+" eingegeben.");
 	if(s.equals("1")){
 		try {
 			Server.run();
@@ -19,6 +19,8 @@ public class init {
 		}
 	} else if (s.equals("2")){
 		Client.connect("localhost");
+	} else {
+		System.out.println("Diese Eingabe kann nicht verarbeitet werden.");
 	}
 	
 	}

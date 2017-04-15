@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
@@ -10,8 +11,12 @@ public class Client {
 	public static Scanner in;
 	public static PrintWriter out;
 	
+	public static ServerSocket _own;
+	
+	
 	public static void connect(String IP){
 		try{
+			_own = new ServerSocket(1715);
 			server = new Socket(IP,1714); //Baue Verbindung mit Server auf
 			out = new PrintWriter(server.getOutputStream(), true);
 			in = new Scanner(server.getInputStream());
@@ -20,8 +25,7 @@ public class Client {
 			
 			Scanner a = new Scanner(System.in);
 			message = a.next();
-			
-			out.println(message); //Die Nachricht geht jetzt an den Server
+			out.println(_own.getInetAddress().getHostAddress()+"#"+message); //Die Nachricht geht jetzt an den Server
 			String s = in.nextLine();
 			System.out.println(s);
 					
