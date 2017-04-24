@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -16,8 +17,11 @@ public class Client {
 	
 	public static void connect(String IP){
 		try{
+			System.out.println("Bitte gib die IP des Server's an: ");
+			Scanner _addr = new Scanner(System.in);
+			
 			_own = new ServerSocket(1715);
-			server = new Socket(IP,1714); //Baue Verbindung mit Server auf
+			server = new Socket(_addr.nextLine(),1714); //Baue Verbindung mit Server auf
 			out = new PrintWriter(server.getOutputStream(), true);
 			in = new Scanner(server.getInputStream());
 			String message;
@@ -25,7 +29,7 @@ public class Client {
 			
 			Scanner a = new Scanner(System.in);
 			message = a.next();
-			out.println(_own.getInetAddress().getHostAddress()+"#"+message); //Die Nachricht geht jetzt an den Server
+			out.println(InetAddress.getLocalHost().getHostAddress().toString()+"#"+message); //Die Nachricht geht jetzt an den Server
 			String s = in.nextLine();
 			System.out.println(s);
 					
