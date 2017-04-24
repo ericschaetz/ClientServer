@@ -12,15 +12,12 @@ public class Client {
 	public static Scanner in;
 	public static PrintWriter out;
 	
-	public static ServerSocket _own;
-	
 	
 	public static void connect(String IP){
 		try{
 			System.out.println("Bitte gib die IP des Server's an: ");
 			Scanner _addr = new Scanner(System.in);
 			
-			_own = new ServerSocket(1715);
 			server = new Socket(_addr.nextLine(),1714); //Baue Verbindung mit Server auf
 			out = new PrintWriter(server.getOutputStream(), true);
 			in = new Scanner(server.getInputStream());
@@ -46,5 +43,4 @@ public class Client {
 				}
 			}
 	}
-
 }}
