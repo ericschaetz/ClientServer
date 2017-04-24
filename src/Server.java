@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -7,6 +8,8 @@ import java.util.regex.Pattern;
 
 public class Server {
 	public static ServerSocket server;
+	
+	
 	
 	public static void handleConnection(Socket client) throws IOException{
 		Scanner in = new Scanner(client.getInputStream()); //Der Eingang vom Server
@@ -18,7 +21,8 @@ public class Server {
 	
 	public static void run() throws IOException{
 		server = new ServerSocket(1714);
-		System.out.println("Der Server wurde gestartet. ("+server.getInetAddress().getHostAddress()+":"+server.getLocalPort()+")");
+		System.out.println("Der Server wurde gestartet. ("+InetAddress.getLocalHost().getHostAddress().toString()+")");
+		
 		while (true){
 			//Hoert am Socket, ob was ankommt.
 			Socket client = null;
