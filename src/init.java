@@ -18,7 +18,7 @@ public class init {
 			e.printStackTrace();
 		}
 	} else if (s.equals("2")){
-		Client.connect("localhost");
+		Client.connect();
 	} else {
 		System.out.println("Diese Eingabe kann nicht verarbeitet werden.");
 	}

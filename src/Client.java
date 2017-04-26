@@ -13,7 +13,7 @@ public class Client {
 	public static PrintWriter out;
 	
 	
-	public static void connect(String IP){
+	public static void connect(){
 		try{
 			System.out.println("Bitte gib die IP des Server's an: ");
 			Scanner _addr = new Scanner(System.in);
@@ -22,13 +22,13 @@ public class Client {
 			out = new PrintWriter(server.getOutputStream(), true);
 			in = new Scanner(server.getInputStream());
 			String message;
-			System.out.println("Bitte geben Sie eine Nachricht ein!");
+			System.out.println("Bitte gib deinen Namen ein: ");
 			
 			Scanner a = new Scanner(System.in);
 			message = a.next();
 			out.println(InetAddress.getLocalHost().getHostAddress().toString()+"#"+message); //Die Nachricht geht jetzt an den Server
 			String s = in.nextLine();
-			System.out.println(s);
+			System.out.println("Server: "+s);
 					
 		} catch(UnknownHostException e){
 			e.printStackTrace();

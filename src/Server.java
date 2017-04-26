@@ -15,8 +15,8 @@ public class Server {
 		Scanner in = new Scanner(client.getInputStream()); //Der Eingang vom Server
 		PrintWriter out = new PrintWriter(client.getOutputStream(), true); //Der Datenstrom wieder zurueck
 		String s[] = in.nextLine().split(Pattern.quote("#"));
-		System.out.print("Eingehende Verbindung erkannt. ("+s[0]+")");
-		out.println(s[1]+s[1]);
+		System.out.print("Eingehende Verbindung erkannt. ("+s[0]+" - "+ s[1] +")");
+		out.println("Hallo "+s[1]+", wir freuen uns das du heute gekommen bist.");
 	}
 	
 	public static void run() throws IOException{
